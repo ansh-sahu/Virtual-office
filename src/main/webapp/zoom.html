@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+   <title>Start Meeting</title>
+  <script src='https://meet.jit.si/external_api.js'></script>
+  <link rel="stylesheet" href="css/stylevedio.css">
+
+</head>
+<body>
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+
+
+<div class="thebody text-center">
+<div class="container align-items-center " >
+<div class="transbox text-center">
+
+<a id="start"  class="boton">
+<b>Start a new meeting</b>   
+</a>
+
+
+
+<div id="jitsi-container" class="container align-items-center">
+</div>
+</div>
+</div>
+</div>
+
+<script>
+var button = document.querySelector('#start');
+var container = document.querySelector('#jitsi-container');
+var api = null;
+
+button.addEventListener('click', () => {
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var stringLength = 30;
+
+    function pickRandom() {
+    return possible[Math.floor(Math.random() * possible.length)];
+    }
+
+var randomString = Array.apply(null, Array(stringLength)).map(pickRandom).join('');
+
+    var domain = "meet.jit.si";
+    var options = {
+        "roomName": randomString,
+        "parentNode": container,
+        "width": 1350,
+        "height": 580,
+    };
+    api = new JitsiMeetExternalAPI(domain, options);
+});
+
+</script>
+
+
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="js/scriptvedio.js"></script>
+
+
+</body>
+</html>
